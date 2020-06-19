@@ -66,7 +66,25 @@ const newYorkBusinesses = businesses.filter(business => {
       ManufacturingBusinessSelector.innerHTML += "<hr/>"
     });
 
+    const agentElement = document.querySelector(".agents")
+    agentElement.innerHTML += "<h1>Purchasing Agents</h1>";
 
+    /*
+        Using map(), you extract the purchasing agent object
+        from each business and store it in a new array
+    */
+    const agents = businesses.map(business => {
+        return [business.purchasingAgent, business.companyName, business.phoneWork]
+    })
+    
+    console.table(agents)
+    
+    agents.forEach(agent => {
+        agentElement.innerHTML += `<h2>${agent[0].nameFirst} ${agent[0].nameLast}</h2>`;
+        agentElement.innerHTML += `<p>${agent[1]}</p>`;
+        agentElement.innerHTML += `<p>${agent[2]}</p>`;
+        agentElement.innerHTML += "<hr/>";
+    });    
 
 
 
